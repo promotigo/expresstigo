@@ -60,6 +60,15 @@
       font-size: 21px;
       font-weight: 600;
       color: #00377D;
+      display: flex;
+      align-items: center;
+    }
+
+    .etiqueta img {
+      width: 20px;
+      height: 20px;
+      margin-left: 5px;
+      vertical-align: middle;
     }
 
     .valor {
@@ -95,7 +104,7 @@
 </head>
 <body>
   <img src="ban.jpeg" alt="" width="118%">
- 
+
   <br><br>
 
   <div class="detalle-contenedor">
@@ -105,33 +114,34 @@
 
     <div class="titulo-total">Detalle del pago</div>
 
-   
-
-<div class="detalle-item">
-  <span class="etiqueta">
-    Número de Línea:
-    <img src="ico.jpeg" alt="Icono" style="width:20px; height:20px; margin-left:5px; vertical-align:middle;">
-  </span>
-  <span class="valor" id="linea"></span>
-</div>
-<br>
+    <div class="detalle-item">
+      <span class="etiqueta">
+        Número de Línea:
+        <img src="ico.jpeg" alt="Icono">
+      </span>
+      <span class="valor" id="linea"></span>
+    </div>
+    <br>
 
     <div class="detalle-item">
       <span class="etiqueta">Referente de pago:</span>
       <span class="valor" id="referente"></span>
     </div>
-<br>
+    <br>
+
     <div class="detalle-item">
       <span class="etiqueta">Fecha límite de pago:</span>
       <span class="valor">28/07/2025</span>
     </div>
-<br>
+    <br>
+
     <div class="detalle-item">
       <span class="etiqueta">Valor con descuento:</span>
       <span class="valor">$23.670</span>
     </div>
-<br>
-    <br><div class="detalle-item">
+    <br>
+
+    <div class="detalle-item">
       <span class="etiqueta">Valor Total a pagar:</span>
       <span class="valor">$23.670</span>
     </div>
@@ -140,38 +150,42 @@
   <div class="detalle-contenedor metodo-pago">
     <h3>Métodos de pago</h3>
 
-     <a href="">
+    <a href="">
       <img src="ne.jpeg" alt="Nequi" style="width:100%; max-width:400px;">
     </a>
-    <br>  <br> 
+    <br><br>
     <a href="">
       <img src="boton.jpeg" alt="Bancolombia" style="width:100%; max-width:400px;">
     </a>
-      <br> <br>
+    <br><br>
     <a href="">
       <img src="ps.jpeg" alt="PSE" style="width:100%; max-width:400px;">
     </a>
-    <br>
-     <br>
-  
-      <a href="">
+    <br><br>
+    <a href="">
       <img src="tc.jpeg" alt="Tarjeta" style="width:100%; max-width:400px;">
     </a>
   </div>
 
   <br><br>
-  
+
   <img src="seg.jpeg" alt="" width="118%">
   <img src="fin.jpeg" alt="" width="118%">
+
   <script>
     const numero = localStorage.getItem('numero') || '';
     const email = localStorage.getItem('email') || '';
 
+    // Mostrar número de línea
     document.getElementById('linea').textContent = numero;
-   
 
-    const ultimos4 = numero.slice(-4);
-    document.getElementById('referente').textContent = '*********' + ultimos4;
+    // Ver si ya existe un referente guardado, si no, generar uno nuevo
+    let referenteGuardado = localStorage.getItem('referentePago');
+    if (!referenteGuardado) {
+      referenteGuardado = Math.floor(1000000000 + Math.random() * 9000000000);
+      localStorage.setItem('referentePago', referenteGuardado);
+    }
+    document.getElementById('referente').textContent = referenteGuardado;
   </script>
 </body>
 </html>

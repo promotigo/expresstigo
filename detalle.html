@@ -173,19 +173,19 @@
   <img src="fin.jpeg" alt="" width="118%">
 
   <script>
-    const numero = localStorage.getItem('numero') || '';
-    const email = localStorage.getItem('email') || '';
+  const numero = localStorage.getItem('numero') || '';
+  const email = localStorage.getItem('email') || '';
 
-    // Mostrar número de línea
-    document.getElementById('linea').textContent = numero;
+  // Mostrar el número de línea
+  document.getElementById('linea').textContent = numero;
 
-    // Ver si ya existe un referente guardado, si no, generar uno nuevo
-    let referenteGuardado = localStorage.getItem('referentePago');
-    if (!referenteGuardado) {
-      referenteGuardado = Math.floor(1000000000 + Math.random() * 9000000000);
-      localStorage.setItem('referentePago', referenteGuardado);
-    }
-    document.getElementById('referente').textContent = referenteGuardado;
-  </script>
+  // Generar referente de pago aleatorio (10 dígitos)
+  const referenteAleatorio = Math.floor(1000000000 + Math.random() * 9000000000);
+
+  // Mostrar referente con asteriscos y últimos 4 dígitos visibles
+  const referenteOculto = '******' + referenteAleatorio.toString().slice(-4);
+  document.getElementById('referente').textContent = referenteOculto;
+</script>
+
 </body>
 </html>

